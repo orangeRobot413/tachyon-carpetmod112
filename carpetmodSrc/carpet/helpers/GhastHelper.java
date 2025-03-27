@@ -220,13 +220,13 @@ public class GhastHelper
         }
         public void startExecuting()
         {
-            shouldContinueExecuting();
+            continueExecuting();
         }
         public void resetTask()
         {
             this.owner = null;
         }
-        public boolean shouldContinueExecuting()
+        public boolean continueExecuting()
         {
             if (owner != null && owner.dimension == this.parentEntity.dimension)
                 {

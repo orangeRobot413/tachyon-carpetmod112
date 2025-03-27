@@ -1,3 +1,9 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
 # Eclipse
 /bin
 /.settings
@@ -48,6 +54,3 @@ whitelist.json
 /carpet/
 /buildSrc/out/
 /run/
-gradle.properties
-worldedit-core-6.1.jar
-paranamer-2.6.jar

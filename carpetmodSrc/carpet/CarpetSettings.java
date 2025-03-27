@@ -42,11 +42,10 @@ import static carpet.CarpetSettings.RuleCategory.*;
 
 public class CarpetSettings
 {
-    public static final boolean INTERNAL_BUILD = false;
     public static boolean locked = false;
 
     // TODO: replace these constants at build time
-    public static final String tagVersion = "v0.2.0";
+    public static final String tagVersion = "v0.1.5";
     public static final String carpetVersion = "Carpet Vastech Addition " + tagVersion;
 
     public static final String minecraftVersion = "1.12.2";
@@ -106,9 +105,6 @@ public class CarpetSettings
             "Makes a chunk act like a lazy chunk for entities and falling sand"
     })
     public static boolean commandEntityInfo = true;
-
-    @Rule(desc = "Enables /entityTask command", category = COMMANDS)
-    public static boolean commandEntityTask = false;
 
     @Rule(desc = "Enables /fill13 command, which is a /fill with grammar of 1.13", category = COMMANDS)
     public static boolean commandFill13 = false;
@@ -1056,7 +1052,6 @@ public class CarpetSettings
     )
     public static boolean autoCraftingDropper = false;
 
-    /*
     public static boolean validateRainyaphtyl(boolean val) {
         if (val) return true;
         else {
@@ -1070,7 +1065,7 @@ public class CarpetSettings
             category = {FEATURE},
             validator = "validateRainyaphtyl"
     )
-    public static boolean isRainyaphthylCute = true; */
+    public static boolean isRainyaphthylCute = true;
 
 
 
@@ -1233,7 +1228,7 @@ public class CarpetSettings
 
     @Rule(desc = "Let pressure plates, detector rails, frosted ice, " +
             "string and repeating command blocks scheduled normally timed tile ticks on ITT", category = CREATIVE)
-    public static boolean calmITTCrashers = false;
+    public static boolean calmITTCrashers = true;
 
     @Rule(desc = "Disables snooper that collects data from your server to Mojang", category = FIX, validator = "validateDisableSnooper")
     public static boolean disableSnooper = true;
@@ -1304,40 +1299,6 @@ public class CarpetSettings
     @Rule(desc = "Fixes the crash loops related to ArrayIndexOutOfBounds when trying to freezing dragons", category = FIX)
     public static boolean dragonFreezingCrashFix = false;
 
-    @Rule(desc = "Online player use offline UUID for player data", category = FEATURE)
-    public static boolean useOfflineUUIDForPlayerData = false;
-
-    @Rule(desc = "Allow creative players to use the old behavior for flippinCactus that send no updates", category = EXPERIMENTAL)
-    public static boolean creativeInconsistentCactus = true;
-
-    @Rule(desc = "Signs on diamond blocks have a comparator output equal to the number written on it", category = EXPERIMENTAL)
-    public static boolean signComparatorOutput = false;
-
-    @Rule(desc = "Signs on emerald blocks displays the signal strength received via its text", category = EXPERIMENTAL)
-    public static boolean signComparatorDisplay = false;
-
-    @Rule(desc = "When on, disables all block/observer/comparator updates from propagating", category = EXPERIMENTAL)
-    public static boolean totallyNoBlockUpdates = false;
-
-    @Rule(desc = "When on, disables all onBlockAdded() and breakBlock() calls", category = EXPERIMENTAL)
-    public static boolean disableBlockSelfChecks = false;
-
-    @Rule(desc = "Allows /setblock and /fill commands to place lit observers", category = FIX)
-    public static boolean setBlockCanPlaceLitObservers = false;
-
-    @Rule(desc = "In a world with superflat generation, normal terrain generates " +
-            "instead in the overworld for x<0", category = EXPERIMENTAL)
-    public static boolean semiFlatWorldGeneration = false;
-
-    @Rule(desc = "In a world with superflat generation, all blocks are voided " +
-            " in the overworld after all generation and population completes for z<0", category = EXPERIMENTAL)
-    public static boolean semiVoidWorldGeneration = false;
-
-    @Rule(desc = "BungeeCord IP forwarding protocol as a carpet rule", category = EXPERIMENTAL)
-    public static boolean bungeeCordForwarding = false;
-
-    @Rule(desc = "Enable bundled LMS implementation", category = FEATURE)
-    public static boolean modLitematicaServerPaster = false;
 
     // ===== API ===== //
 

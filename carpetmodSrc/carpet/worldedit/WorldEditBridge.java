@@ -26,12 +26,10 @@ public class WorldEditBridge
         {
             Class.forName("com.sk89q.worldedit.WorldEdit");
             worldEditPresent = true;
-            System.out.println("WorldEdit is found in the classpath!");
         }
         catch (ClassNotFoundException e)
         {
             worldEditPresent = false;
-            System.out.println("WorldEdit is not found in the classpath!");
         }
     }
     

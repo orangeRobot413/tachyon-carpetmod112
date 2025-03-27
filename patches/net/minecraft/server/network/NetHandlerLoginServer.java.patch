@@ -1,20 +1,13 @@
 --- ../src-base/minecraft/net/minecraft/server/network/NetHandlerLoginServer.java
 +++ ../src-work/minecraft/net/minecraft/server/network/NetHandlerLoginServer.java
-@@ -1,5 +1,6 @@
+@@ -1,5 +1,7 @@
  package net.minecraft.server.network;
  
++import carpet.CarpetServer;
 +import carpet.CarpetSettings;
  import com.mojang.authlib.GameProfile;
  import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
  import io.netty.channel.ChannelFuture;
-@@ -33,6 +34,7 @@
- import org.apache.commons.lang3.Validate;
- import org.apache.logging.log4j.LogManager;
- import org.apache.logging.log4j.Logger;
-+import uk.co.thinkofdeath.vanillacord.helper.BungeeHelper;
- 
- public class NetHandlerLoginServer implements INetHandlerLoginServer, ITickable
- {
 @@ -44,6 +46,7 @@
      public final NetworkManager field_147333_a;
      private NetHandlerLoginServer.LoginState field_147328_g = NetHandlerLoginServer.LoginState.HELLO;
@@ -41,12 +34,3 @@
          {
              this.func_194026_b(new TextComponentTranslation("multiplayer.disconnect.slow_login", new Object[0]));
          }
-@@ -232,6 +237,8 @@
- 
-     protected GameProfile func_152506_a(GameProfile p_152506_1_)
-     {
-+        if (CarpetSettings.bungeeCordForwarding)
-+            return BungeeHelper.injectProfile(this.field_147333_a, p_152506_1_);
-         UUID uuid = UUID.nameUUIDFromBytes(("OfflinePlayer:" + p_152506_1_.getName()).getBytes(StandardCharsets.UTF_8));
-         return new GameProfile(uuid, p_152506_1_.getName());
-     }

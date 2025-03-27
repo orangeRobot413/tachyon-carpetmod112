@@ -1,7 +1,6 @@
 package carpet.commands;
 
 import carpet.CarpetServer;
-import carpet.CarpetSettings;
 import narcolepticfrog.rsmm.MeterCommand;
 import net.minecraft.command.CommandHandler;
 import redstone.multimeter.command.MeterGroupCommand;
@@ -23,14 +22,12 @@ public class CarpetCommands {
         handler.registerCommand(new CommandDebuglogger());
         handler.registerCommand(new CommandDistance());
         handler.registerCommand(new CommandEntityInfo());
-        handler.registerCommand(new CommandEntityTask());
         handler.registerCommand(new CommandFeel());
         handler.registerCommand(new CommandFill13());
         handler.registerCommand(new CommandFillBiome());
         handler.registerCommand(new CommandGMC());
         handler.registerCommand(new CommandGMS());
         handler.registerCommand(new CommandGrow());
-        if (CarpetSettings.INTERNAL_BUILD) handler.registerCommand(new CommandIngameTest());
         handler.registerCommand(new CommandLagSpike());
         handler.registerCommand(new CommandLazyChunkBehavior());
         handler.registerCommand(new CommandLight());

@@ -1,7 +1,6 @@
 package carpet;
 
 import carpet.helpers.StackTraceDeobfuscator;
-import carpet.network.PluginChannelHandler;
 import carpet.network.PluginChannelManager;
 import carpet.network.ToggleableChannelHandler;
 import carpet.patches.EntityPlayerMPFake;
@@ -12,7 +11,6 @@ import carpet.worldedit.WorldEditBridge;
 import java.io.*;
 import java.util.*;
 
-import me.fallenbreath.lmspaster.LitematicaServerPasterAccess;
 import narcolepticfrog.rsmm.events.TickStartEventDispatcher;
 import narcolepticfrog.rsmm.server.RSMMServer;
 
@@ -22,7 +20,6 @@ import carpet.helpers.TickSpeed;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.player.EntityPlayerMP;
 import carpet.logging.LoggerRegistry;
-import net.minecraft.network.play.client.CPacketCustomPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.WorldServer;
@@ -41,7 +38,6 @@ public class CarpetServer // static for now - easier to handle all around the co
     public static MultimeterServer rsmmServer;
     public static ToggleableChannelHandler legacyRsmmChannel;
     public static ToggleableChannelHandler wecuiChannel;
-    public static PluginChannelHandler lmsChannel;
     public static boolean playerInventoryStacking = false;
     public static int limitITTCounter;
 
@@ -67,20 +63,6 @@ public class CarpetServer // static for now - easier to handle all around the co
         legacyRsmmServer = new RSMMServer(server);
         legacyRsmmChannel = new ToggleableChannelHandler(pluginChannels, legacyRsmmServer.createChannelHandler(), false);
         wecuiChannel = new ToggleableChannelHandler(pluginChannels, WorldEditBridge.createChannelHandler(), false);
-
-        lmsChannel = new PluginChannelHandler() {
-            @Override
-            public String[] getChannels() {
-                return new String[] { me.fallenbreath.lmspaster.network.Network.CHANNEL };
-            }
-
-            @Override
-            public void onCustomPayload(CPacketCustomPayload packet, EntityPlayerMP player) {
-                // Litematica server paster
-                LitematicaServerPasterAccess.onPacket(packet, player);
-            }
-        };
-        pluginChannels.register(lmsChannel);
     }
     public static void onServerLoaded(MinecraftServer server)
     {
